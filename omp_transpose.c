@@ -6,10 +6,10 @@
 double omp_get_wtime(void);
 
 
-double **transpose(double **src, double **dst, int N, int M, int nThreads)
+double **transpose(double **src, double **dst, int N, int M, int nproc)
 {
     int i, j;
-    #pragma omp parallel for private(i, j) shared(src, dst) num_threads(nThreads)
+    #pragma omp parallel for private(i, j) shared(src, dst) num_threads(nproc)
     for (i = 0; i < M; ++i) {
 	    for (j = 0; j < N; ++j) {
             dst[j][i] = src[i][j];

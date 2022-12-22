@@ -21,32 +21,6 @@ double **Matrix_alloc(int N, int M)
     return res;
 }
 
-// void
-// transpose(int n, double a[n], double resMpi[n][n], int rank, int nproc)
-// {
-//     size_t i = 0, j = 0, idx = 0;
-//     double rowMpi[n];
-//     MPI_Request request;
-//     while (rank + i < n) {
-//         for (j = 0; j < n; j++)
-//         {
-//             idx = j * n + rank + i;
-//             if (idx < n * n) {
-//                 if (!rank) {
-//                     resMpi[i][j] = a[idx];
-
-//                 } else {
-//                     rowMpi[j] = a[idx];
-//                 }
-//             }
-//         }
-//         if (rank) {
-//             MPI_Isend(rowMpi, n, MPI_DOUBLE, 0, i, MPI_COMM_WORLD, &request);
-//         } 
-//         i += nproc;
-//     }
-// }
-
 void
 transpose(int N, double *src, double dst[][N], int rank, int nproc)
 {
@@ -72,15 +46,6 @@ transpose(int N, double *src, double dst[][N], int rank, int nproc)
     }
 }
 
-// double **transpose(double **src, double **dst, int N, int M, int nproc)
-// {
-//     int i, j;
-//     for (i = 0; i < M; ++i) {
-// 	    for (j = 0; j < N; ++j) {
-//             dst[j][i] = src[i][j];
-// 	    }
-//     }
-// }
 
 void Matrix_print(double **A, int N, int M)
 {
